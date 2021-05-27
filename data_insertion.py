@@ -1,5 +1,9 @@
 from models import engine , db_session , Base , Banks , Branches 
-Base.metadata.create_all(bind = engine) 
+import glob
+import os
+
+Base.metadata.create_all(bind = engine)
+
 
 bank1 = Banks(name="STATE BANK OF INDIA	1", id =1 )
 bank2 = Banks(name="PUNJAB NATIONAL BANK", id =2 )
@@ -21,3 +25,5 @@ banks = db_session.query(Banks).all()
 
 for bank in banks:
     print(bank.name)
+
+

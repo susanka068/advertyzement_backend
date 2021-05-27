@@ -31,6 +31,4 @@ class Branches(Base):
     state = Column(String)
     bank = relationship(
         Banks,
-        backref=backref('Branches',
-                        uselist=True,
-                        cascade='delete,all'))
+        backref=backref('Branches', uselist=True, cascade='delete,all'))
