@@ -1,9 +1,10 @@
 from sqlalchemy import *
+from sqlalchemy.log import echo_property
 from sqlalchemy.orm import (scoped_session, sessionmaker, relationship,
                             backref)
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('sqlite:///database.sqlite3', convert_unicode=True)
+engine = create_engine('sqlite:///database.sqlite3', convert_unicode=True , echo = True )
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
@@ -15,19 +16,21 @@ Base.query = db_session.query_property()
 
 class Banks(Base):
     __tablename__ = 'banks'
-    id = Column(BigInteger, primary_key=True)
     name = Column(String)
+    id = Column(BigInteger, primary_key=True)
 
 
 class Branches(Base):
     __tablename__ = 'branches'
     ifsc = Column(String, primary_key = True )
-    bank_id
-    name = Column(String)
-    hired_on = Column(DateTime, default=func.now())
-    department_id = Column(Integer, ForeignKey('department.id'))
-    department = relationship(
-        Department,
-        backref=backref('employees',
+    bank_id = Column(  BigInteger , ForeignKey('banks.id') )
+    branch = Column(String)
+    address = Column(String)
+    city = Column(String)
+    district = Column(String)
+    state = Column(String)
+    bank = relationship(
+        Banks,
+        backref=backref('Branches',
                         uselist=True,
                         cascade='delete,all'))
