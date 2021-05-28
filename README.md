@@ -43,3 +43,5 @@ python3 app.py
 ```
 
 4. open your browser and go to [http://localhost:5000/gql](http://localhost:5000/gql) to view the graphql interface.
+
+![deployment screenshot](https://github.com/susanka068/advertyzement_backend/blob/master/Screenshot%20from%202021-05-28%2010-03-41.png)
