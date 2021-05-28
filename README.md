@@ -14,6 +14,12 @@ Create a API server :
 6. Bonus points for Test cases.
 7. Bonus points for deploying it on services like Heroku.
 
+### Deployment
+
+This application is hosted on [heroku](https://advertyzement-susanka068.herokuapp.com/gql)
+
+Link : https://advertyzement-susanka068.herokuapp.com/gql
+
 ### Instructions to run on your local system:
 
 1. Clone this repository.
