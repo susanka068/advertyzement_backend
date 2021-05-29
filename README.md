@@ -6,7 +6,7 @@ This simple project done for Advertyzement hiring process assessment.
 
 Create a API server :
 
-1. Data can be found in the repository for the database. 
+1. Data can be found in the [repository](https://github.com/snarayanank2/indian_banks) for the database. 
 2. Any Python web framework can be used to create the API service.
 3. It should support GraphQL calls at ‘/gql’.
 4. It should have a query for querying Bank Branches data with all the sub class data.
