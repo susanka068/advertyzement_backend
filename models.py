@@ -17,13 +17,13 @@ Base.query = db_session.query_property()
 class Banks(Base):
     __tablename__ = 'banks'
     name = Column(String)
-    id = Column(BigInteger, primary_key=True)
+    id = Column(Integer, primary_key=True)
 
 
 class Branches(Base):
     __tablename__ = 'branches'
     ifsc = Column(String, primary_key = True )
-    bank_id = Column(  BigInteger , ForeignKey('banks.id') )
+    bank_id = Column(  Integer , ForeignKey('banks.id') )
     branch = Column(String)
     address = Column(String)
     city = Column(String)
@@ -31,4 +31,4 @@ class Branches(Base):
     state = Column(String)
     bank = relationship(
         Banks,
-        backref=backref('Branches', uselist=True, cascade='delete,all'))
+        backref=backref('branches', uselist=True, cascade='delete,all'))

@@ -6,7 +6,7 @@ from sqlalchemy import text
 
 Base.metadata.create_all(bind = engine)
 
-
+bank_list = [None]*200 
 
 
 # banks = db_session.query(Banks).all()
@@ -18,8 +18,12 @@ def create_banks():
 	bank_data = pd.read_csv('banks.csv')
 
 	for ind in bank_data.index:
-		bank_row = Banks(name = bank_data['name'][ind] , id = bank_data['id'][ind]  )
+		name = bank_data['name'][ind] 
+		id = bank_data['id'][ind]
+		#print(f"{name} , {id}")
+		bank_row = Banks(name = name , id = int(id) )
 		db_session.add(bank_row)
+		bank_list[int(id)] = bank_row
 
 
 
@@ -35,8 +39,10 @@ def create_branches():
 		city=branches_data['city'][ind] 
 		district=branches_data['district'][ind] 
 		state=branches_data['state'][ind]
+		bank= bank_list[int(bank_id)]
+		
 		# print(f"{ifsc} , {bank_id} , {branch} , {address} , {branch} , {address} , {city} , {district} , {state} ")
-		branch_row = Branches(ifsc = ifsc , bank_id = bank_id , branch = branch , address = address , city=city , district=district , state=state )
+		branch_row = Branches(ifsc = ifsc ,bank_id = int(bank_id) , branch = branch , address = address , city=city , district=district , state=state , bank=bank )
 		db_session.add(branch_row)
 
 
